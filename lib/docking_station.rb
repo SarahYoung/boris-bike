@@ -24,9 +24,6 @@ class DockingStation
 		bike_count == @capacity
 	end
 
-	def full_station
-	end
-
 	def available_bikes
 		@bikes.reject {|bike| bike.broken? }
 	end
