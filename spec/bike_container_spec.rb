@@ -28,6 +28,14 @@ describe BikeContainer do
     expect(holder).to be_full
   end
 
+  it "should know when it's empty" do
+    expect(holder).to be_empty
+  end
+
+  it "should not release a bike if it's empty" do
+    expect{ holder.dock(bike) }.to raise_error(RuntimeError)
+  end
+
   it "should not accept a bike if it's full" do
     fill_holder holder
     expect{ holder.dock(bike) }.to raise_error(RuntimeError)
@@ -44,5 +52,4 @@ describe BikeContainer do
   def fill_holder(holder)
     holder.capacity.times { holder.dock(Bike.new) }
   end
-
 end
