@@ -1,4 +1,3 @@
-# link to the Bike class
 require_relative "../lib/bike"
 describe Bike do 
 	let (:bike) { Bike.new }
