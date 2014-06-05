@@ -9,6 +9,7 @@ describe Van do
 		station = DockingStation.new
 		van = Van.new
 		available_bike = Bike.new
+		
 		station.dock(available_bike)
 		van.collect_available_bikes_from(station)
 		expect(van.bikes).to include (available_bike)
@@ -20,9 +21,11 @@ describe Van do
 		station = DockingStation.new
 		van = Van.new
 		bike = Bike.new
+
 		broken_bike = bike.break
-
-		
-
+		station.dock(broken_bike)
+		van.collect_broken_bikes_from(station)
+		expect(van.bikes).to include (broken_bike)
+		expect(station).to be_empty
 	end
 end
