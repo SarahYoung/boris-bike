@@ -1,21 +1,17 @@
 require_relative '../lib/docking_station'
 
 describe DockingStation do
+	
+	let(:bike) { Bike.new }
 	let(:station) { DockingStation.new(:capacity => 20) }
-
-	it "should allow setting default capacity on initialising" do
-		expect(station.capacity).to eq(20)
-	end
-end
-
-describe DockingStation do
 
 	def fill_station(station)
 		20.times { station.dock(Bike.new) }
 	end
-	
-	let(:bike) { Bike.new }
-	let(:station) { DockingStation.new(:capacity => 20) }
+
+	it "allows setting default capacity on initialising" do
+		expect(station.capacity).to eq(20)
+
 
 	it "accepts a bike" do
 		bike = Bike.new

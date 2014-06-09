@@ -35,7 +35,7 @@ describe Van do
 		expect(van).to be_empty
 	end
 
-	it "collects working bikes from the garage" do
+	it "collects available bikes from the garage" do
 		working_bike = Bike.new
 		garage.dock(working_bike)
 
@@ -45,7 +45,7 @@ describe Van do
 		expect(garage).to be_empty
 	end
 
-	it "delivers working bikes to the station" do
+	it "delivers available bikes to the station" do
 
 		working_bike = Bike.new
 		van.dock(working_bike)
