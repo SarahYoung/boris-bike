@@ -11,7 +11,7 @@ describe DockingStation do
 
 	it "allows setting default capacity on initialising" do
 		expect(station.capacity).to eq(20)
-
+	end	
 
 	it "accepts a bike" do
 		bike = Bike.new
