@@ -26,13 +26,12 @@ describe Garage do
 		van.dock(broken_bike)
 
 		garage.collect_broken_bikes_from(van)
-		garage.fix_broken_bikes(broken_bike)
+		garage.fix_broken_bikes
 
 		expect(garage.available_bikes.count).to eq(1)
 	end
 
-	xit "delivers working bikes to van" do
-		working_bike = Bike.new
+	it "delivers working bikes to van" do
 		broken_bike = Bike.new
 		broken_bike.break
 		van.dock(broken_bike)
@@ -42,6 +41,6 @@ describe Garage do
 		garage.deliver_available_bikes_to(van)
 
 		expect(garage).to be_empty
-		expect(van.bikes).to include (working_bike)
+		expect(van.available_bikes.count).to eq(1)
 	end
 end

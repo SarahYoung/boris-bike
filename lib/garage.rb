@@ -11,8 +11,8 @@ class Garage
 		end
 	end
 
-	def fix_broken_bikes(broken_bike)
-		broken_bike.each {|bike| bike.fix}
+	def fix_broken_bikes
+		bikes.each {|bike| bike.fix}
 	end
 
 	def deliver_available_bikes_to(van)
