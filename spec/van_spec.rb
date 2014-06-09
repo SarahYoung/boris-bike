@@ -5,9 +5,38 @@ require_relative '../lib/bike'
 
 describe Van do 
 
-	it "should collect available bikes from a station" do
-		station = DockingStation.new
-		van = Van.new
+	let (:station) { DockingStation.new }
+	let (:van) { Van.new }
+
+	def bike_types
+			@working_bike = Bike.new
+			@broken_bike = Bike.new.break
+	end
+
+	it "only loads broken bikes from the docking station" do
+
+		bike_types
+		station.dock(@working_bike)
+		station.dock(@broken_bike)
+		van.load_broken_bikes_from(station)
+
+		expect(van.bike).to eq([@broken_bike])
+		expct(station.bike.count).to eq(1)
+
+	end
+
+	it "only unloads working bikes to the station" do 
+		
+		bike_types
+		van.dock(@working_bike)
+		van.unload_broken_bikes_to(station)
+
+		expect(van.bike.count).to eq(0)
+		expect(station.bike).to eq([@working_bike])
+
+	end
+
+	xit "should collect available bikes from a station" do
 		available_bike = Bike.new
 		
 		station.dock(available_bike)
@@ -16,13 +45,8 @@ describe Van do
 		expect(station).to be_empty
 	end
 
-	it "should collect broken bikes from the docking station" do
+	xit "should collect broken bikes from the docking station" do
 
-		station = DockingStation.new
-		van = Van.new
-		bike = Bike.new
-
-		broken_bike = bike.break
 		station.dock(broken_bike)
 		van.collect_broken_bikes_from(station)
 		expect(van.bikes).to include (broken_bike)

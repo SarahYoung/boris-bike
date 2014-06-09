@@ -3,17 +3,11 @@ module BikeContainer
 	DEFAULT_CAPACITY = 10
 
 	def bikes
-		if @bikes.nil?
-			@bikes = []
-		end
-		 @bikes 
+		@bikes ||= []
 	end
 
 	def capacity
-		if @capacity.nil?
-			@capacity = DEFAULT_CAPACITY
-		end
-		@capacity
+		@capacity ||= DEFAULT_CAPACITY
 	end
 
 	def capacity=(value) 
@@ -25,12 +19,20 @@ module BikeContainer
 	end
 
 	def dock(bike)
-		raise "Station is full" if full? 
+		raise "Sorry, there's no more room for bikes" if full? 
 		bikes << bike 
 	end
 
 	def release(bike)
 		bikes.delete(bike)
+	end
+
+	def load(bike)
+		bike.each { |bike| dock(bike) }
+	end
+
+	def unload(bike)
+		bike.each { |bike| release(bike) }
 	end
 
 	def full?
@@ -42,11 +44,15 @@ module BikeContainer
 	end
 
 	def empty_holder(bike)
-		raise "Station is empty" if empty?
+		raise "Oops! Station is empty" if empty?
 	end
 
 	def available_bikes
 		bikes.reject {|bike| bike.broken? }
+	end
+
+	def broken_bikes
+		bikes.select { |bike| bike.broken? }
 	end
 
 end
