@@ -48,11 +48,4 @@ describe Van do
 		expect(station).to be_empty
 	end
 
-	xit "should collect broken bikes from the docking station" do
-
-		station.dock(broken_bike)
-		van.collect_broken_bikes_from(station)
-		expect(van.bikes).to include (broken_bike)
-		expect(station).to be_empty
-	end
 end
