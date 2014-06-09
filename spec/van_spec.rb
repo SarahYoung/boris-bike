@@ -21,7 +21,6 @@ describe Van do
 
 		expect(van.bikes).to include (broken_bike)
 		expect(station).to be_empty
-
 	end
 
 	it "delivers broken bikes to the garage" do
@@ -34,6 +33,16 @@ describe Van do
 
 		expect(garage.bikes).to include (broken_bike)
 		expect(van).to be_empty
+	end
+
+	it "collects working bikes from the garage" do
+		working_bike = Bike.new
+		garage.dock(working_bike)
+
+		van.collect_working_bikes_from(garage)
+
+		expect(van.bikes).to include (working_bike)
+		expect(garage).to be_empty
 	end
 
 	it "delivers working bikes to the station" do
