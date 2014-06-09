@@ -8,11 +8,4 @@ class Van
 		end
 	end
 
-	def collect_broken_bikes_from(station)
-		station.broken_bikes.each do |bike|
-			station.release(bike)
-			self.dock(bike)
-		end
-	end
-
 end
