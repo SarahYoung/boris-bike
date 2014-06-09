@@ -8,31 +8,22 @@ describe Van do
 	let (:station) { DockingStation.new }
 	let (:van) { Van.new }
 
-	def bike_types
-			@working_bike = Bike.new
-			@broken_bike = Bike.new.break
-	end
 
-	it "only loads broken bikes from the docking station" do
+	# def bike_types
+	# 		@working_bike = Bike.new
+	# 		@broken_bike = Bike.new.break
+	# end
 
-		bike_types
-		station.dock(@working_bike)
-		station.dock(@broken_bike)
+	it "loads broken bikes from the docking station" do
+
+		broken_bike = Bike.new
+		broken_bike.break		
+		station.dock(broken_bike)
+
 		van.load_broken_bikes_from(station)
 
-		expect(van.bike).to eq([@broken_bike])
-		expct(station.bike.count).to eq(1)
-
-	end
-
-	it "only unloads working bikes to the station" do 
-		
-		bike_types
-		van.dock(@working_bike)
-		van.unload_broken_bikes_to(station)
-
-		expect(van.bike.count).to eq(0)
-		expect(station.bike).to eq([@working_bike])
+		expect(van.bikes).to include (broken_bike)
+		expect(station).to be_empty
 
 	end
 
