@@ -21,4 +21,5 @@ class Garage
 			van.dock(bike)
 		end
 	end
+	
 end
