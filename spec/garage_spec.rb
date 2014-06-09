@@ -19,4 +19,15 @@ describe Garage do
 		expect(garage.bikes).to include (broken_bike)
 		expect(van).to be_empty
 	end
+
+	it "fixes broken bikes" do
+		broken_bike = Bike.new
+		broken_bike.break
+		van.dock(broken_bike)
+
+		garage.collect_broken_bikes_from(van)
+		garage.fix_broken_bikes
+
+		expect(garage.available_bikes.count).to eq(1)
+	end
 end
