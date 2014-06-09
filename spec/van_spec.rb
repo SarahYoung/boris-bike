@@ -14,16 +14,28 @@ describe Van do
 	# 		@broken_bike = Bike.new.break
 	# end
 
-	it "loads broken bikes from the docking station" do
+	it "collects broken bikes from the docking station" do
 
 		broken_bike = Bike.new
 		broken_bike.break		
 		station.dock(broken_bike)
 
-		van.load_broken_bikes_from(station)
+		van.collect_broken_bikes_from(station)
 
 		expect(van.bikes).to include (broken_bike)
 		expect(station).to be_empty
+
+	end
+
+	it "delivers working bikes to the station" do
+
+		working_bike = Bike.new
+		van.dock(working_bike)
+
+		van.deliver_working_bikes_to(station)
+
+		expect(station.bikes).to include (working_bike)
+		expect(van).to be_empty 
 
 	end
 
