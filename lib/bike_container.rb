@@ -27,14 +27,6 @@ module BikeContainer
 		bikes.delete(bike)
 	end
 
-	def load(bike)
-		bike.each { |bike| dock(bike) }
-	end
-
-	def unload(bike)
-		bike.each { |bike| release(bike) }
-	end
-
 	def full?
 		bike_count() == @capacity
 	end
