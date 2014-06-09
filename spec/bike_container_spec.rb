@@ -1,4 +1,4 @@
-require './lib/bike_container'
+require_relative'../lib/bike_container.rb'
 
 class ContainerHolder; include BikeContainer; end
 

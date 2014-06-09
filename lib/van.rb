@@ -1,4 +1,5 @@
 class Van
+	
 	include BikeContainer
 
 	def	collect_broken_bikes_from(station)
