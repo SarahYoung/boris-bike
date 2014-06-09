@@ -7,6 +7,7 @@ describe DockingStation do
 		expect(station.capacity).to eq(20)
 	end
 end
+
 describe DockingStation do
 
 	def fill_station(station)

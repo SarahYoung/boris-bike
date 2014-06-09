@@ -9,11 +9,6 @@ describe Van do
 	let (:van) { Van.new }
 
 
-	# def bike_types
-	# 		@working_bike = Bike.new
-	# 		@broken_bike = Bike.new.break
-	# end
-
 	it "collects broken bikes from the docking station" do
 
 		broken_bike = Bike.new
@@ -37,15 +32,6 @@ describe Van do
 		expect(station.bikes).to include (working_bike)
 		expect(van).to be_empty 
 
-	end
-
-	xit "should collect available bikes from a station" do
-		available_bike = Bike.new
-		
-		station.dock(available_bike)
-		van.collect_available_bikes_from(station)
-		expect(van.bikes).to include (available_bike)
-		expect(station).to be_empty
 	end
 
 end
