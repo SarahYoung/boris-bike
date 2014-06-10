@@ -5,21 +5,19 @@ class Garage
 	include BikeContainer
 
 	def	collect_broken_bikes_from(van)
-		van.broken_bikes.each do |bike|
-			van.release(bike)
-			self.dock(bike)
-		end
+		van.broken_bikes.each {|bike|	van.release(bike); self.dock(bike)}
 	end
 
 	def fix_broken_bikes
 		bikes.each {|bike| bike.fix}
 	end
 
-	def deliver_available_bikes_to(van)
-		self.available_bikes.each do |bike|
-			self.release(bike)
-			van.dock(bike)
-		end
+	def load_available_bikes_to(van)
+		self.available_bikes.each {|bike| self.release(bike) ; van.dock(bike)}
+	end
+
+	def initialize(options = {}) 
+		self.capacity = options.fetch(:capacity, capacity) 
 	end
 	
 end

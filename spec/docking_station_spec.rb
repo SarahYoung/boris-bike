@@ -3,14 +3,14 @@ require_relative '../lib/docking_station'
 describe DockingStation do
 	
 	let(:bike) { Bike.new }
-	let(:station) { DockingStation.new(:capacity => 20) }
+	let(:station) { DockingStation.new(:capacity => 10) }
 
 	def fill_station(station)
-		20.times { station.dock(Bike.new) }
+		10.times { station.dock(Bike.new) }
 	end
 
 	it "allows setting default capacity on initialising" do
-		expect(station.capacity).to eq(20)
+		expect(station.capacity).to eq(10)
 	end	
 
 	it "accepts a bike" do
@@ -29,7 +29,7 @@ describe DockingStation do
 
 	it "knows when it's full" do
 		expect(station).not_to be_full
-		20.times { station.dock(Bike.new) }
+		10.times { station.dock(Bike.new) }
 		expect(station).to be_full
 	end
 

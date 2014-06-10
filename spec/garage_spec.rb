@@ -8,39 +8,35 @@ describe Garage do
 
 	let (:van) { Van.new }
 	let (:garage) { Garage.new }
+	let (:broken_bike) { Bike.new }
 
-	it "collects broken bikes from van" do
-		broken_bike = Bike.new
-		broken_bike.break
-		van.dock(broken_bike)
+	xit "allows setting default capacity on initialising" do
+		expect(garage.capacity).to eq(100)
+	end	
 
-		garage.collect_broken_bikes_from(van)
+	context "Collecting, fixing, and delivering bikes" do
 
-		expect(garage.bikes).to include (broken_bike)
-		expect(van).to be_empty
-	end
+		before do
+			broken_bike.break
+			van.dock(broken_bike)
+			garage.collect_broken_bikes_from(van)
+		end
 
-	it "fixes broken bikes" do
-		broken_bike = Bike.new
-		broken_bike.break
-		van.dock(broken_bike)
+		it "collects broken bikes from van" do
+			expect(garage.bikes).to include (broken_bike)
+			expect(van).to be_empty
+		end
 
-		garage.collect_broken_bikes_from(van)
-		garage.fix_broken_bikes
+		it "fixes broken bikes" do
+			garage.fix_broken_bikes
+			expect(garage.available_bikes.count).to eq(1)
+		end
 
-		expect(garage.available_bikes.count).to eq(1)
-	end
-
-	it "delivers working bikes to van" do
-		broken_bike = Bike.new
-		broken_bike.break
-		van.dock(broken_bike)
-		garage.collect_broken_bikes_from(van)
-		garage.fix_broken_bikes
-		
-		garage.deliver_available_bikes_to(van)
-
-		expect(garage).to be_empty
-		expect(van.available_bikes.count).to eq(1)
+		it "loads working bikes to van" do
+			garage.fix_broken_bikes
+			garage.load_available_bikes_to(van)
+			expect(garage).to be_empty
+			expect(van.available_bikes.count).to eq(1)
+		end
 	end
 end

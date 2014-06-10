@@ -10,6 +10,9 @@ describe Van do
 	let (:van) { Van.new }
 	let (:garage) { Garage.new }
 
+	it "allows setting default capacity on initialising" do
+		expect(van.capacity).to eq(10)
+	end	
 
 	it "collects broken bikes from the docking station" do
 
@@ -56,6 +59,4 @@ describe Van do
 		expect(van).to be_empty 
 
 	end
-
-
 end

@@ -19,7 +19,7 @@ module BikeContainer
 	end
 
 	def dock(bike)
-		raise "Sorry, there's no more room for bikes" if full? 
+		raise "Oops! there's no more room for bikes" if full? 
 		bikes << bike 
 	end
 
