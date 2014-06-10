@@ -1,6 +1,6 @@
 ##Boris Bikes
 
-A [Makers Academy](https://github.com/makersacademy) Week 3 assignment, set by [@shadchnev](https://github.com/shadchnev), to replicate the functionality of London's Boris Bike initiative. The project's goal was introduce students to Object-Oriented Programming and Design.
+A [Makers Academy](https://github.com/makersacademy) Week 3 assignment, set by [@shadchnev](https://github.com/shadchnev), to replicate the functionality of London's Boris Bikes initiative. The project's goal was introduce students to Object-Oriented Programming and Design.
 
 ###Specification
 
