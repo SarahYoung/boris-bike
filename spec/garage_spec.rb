@@ -10,33 +10,32 @@ describe Garage do
 	let (:garage) { Garage.new }
 	let (:broken_bike) { Bike.new }
 
-	xit "allows setting default capacity on initialising" do
-		expect(garage.capacity).to eq(100)
-	end	
+	before do
+		broken_bike.break
+		van.dock(broken_bike)
+		garage.collect_broken_bikes_from(van)
+	end
+	
+	it "collects broken bikes from van" do
+		expect(garage.bikes).to include (broken_bike)
+		expect(van).to be_empty
+	end
+	
+	it "fixes broken bikes" do
+		garage.fix_broken_bikes
+		expect(garage.available_bikes.count).to eq(1)
+	end
+	
+	it "loads working bikes to van" do
+		garage.fix_broken_bikes
+		garage.load_available_bikes_to(van)
+		expect(garage).to be_empty
+		expect(van.available_bikes.count).to eq(1)
+	end
 
-	context "Collecting, fixing, and delivering bikes" do
-
-		before do
-			broken_bike.break
-			van.dock(broken_bike)
-			garage.collect_broken_bikes_from(van)
-		end
-
-		it "collects broken bikes from van" do
-			expect(garage.bikes).to include (broken_bike)
-			expect(van).to be_empty
-		end
-
-		it "fixes broken bikes" do
-			garage.fix_broken_bikes
-			expect(garage.available_bikes.count).to eq(1)
-		end
-
-		it "loads working bikes to van" do
-			garage.fix_broken_bikes
-			garage.load_available_bikes_to(van)
-			expect(garage).to be_empty
-			expect(van.available_bikes.count).to eq(1)
-		end
+	context "On initialisation" do
+		xit "allows setting default capacity" do
+			expect(garage.capacity).to eq(100)
+		end	
 	end
 end
