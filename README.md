@@ -1,6 +1,6 @@
 ###Boris Bikes
 
-A Makers Academy Week 3 project to replicate the functionality of London's Boris Bike initiative.
+A [Makers Academy](https://github.com/makersacademy) Week 3 project, set by [@shadchnev](https://github.com/shadchnev), to replicate the functionality of London's Boris Bike initiative. The project's goal was introduce students to Object-Oriented Programming and Design.
 
 ####Specification
 
