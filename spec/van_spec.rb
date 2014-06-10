@@ -9,54 +9,50 @@ describe Van do
 	let (:station) { DockingStation.new }
 	let (:van) { Van.new }
 	let (:garage) { Garage.new }
+	let (:working_bike) { Bike.new }
+	let (:broken_bike) { Bike.new }
 
-	it "allows setting default capacity on initialising" do
-		expect(van.capacity).to eq(10)
+
+	context "Upon initialisation" do
+		xit "allows setting default capacity" do
+			expect(van.capacity).to eq(10)
+		end
 	end	
 
-	it "collects broken bikes from the docking station" do
+	context "Transporting broken bikes" do
 
-		broken_bike = Bike.new
-		broken_bike.break		
-		station.dock(broken_bike)
+		before do
+			broken_bike.break		
+			station.dock(broken_bike)
+		  van.collect_broken_bikes_from(station)
+		end
 
-		van.collect_broken_bikes_from(station)
+		it "collects broken bikes from the docking station" do
+			expect(van.bikes).to include (broken_bike)
+			expect(station).to be_empty
+		end
 
-		expect(van.bikes).to include (broken_bike)
-		expect(station).to be_empty
+		it "delivers broken bikes to the garage" do
+			van.deliver_broken_bikes_to(garage)
+
+			expect(garage.bikes).to include (broken_bike)
+			expect(van).to be_empty
+		end
 	end
 
-	it "delivers broken bikes to the garage" do
-		broken_bike = Bike.new
-		broken_bike.break
-		station.dock(broken_bike)
-		van.collect_broken_bikes_from(station)
+	context "Transporting available bikes" do
+		it "collects available bikes from the garage" do
+			garage.dock(working_bike)
+			van.collect_working_bikes_from(garage)
+			expect(van.bikes).to include (working_bike)
+			expect(garage).to be_empty
+		end
 
-		van.deliver_broken_bikes_to(garage)
-
-		expect(garage.bikes).to include (broken_bike)
-		expect(van).to be_empty
-	end
-
-	it "collects available bikes from the garage" do
-		working_bike = Bike.new
-		garage.dock(working_bike)
-
-		van.collect_working_bikes_from(garage)
-
-		expect(van.bikes).to include (working_bike)
-		expect(garage).to be_empty
-	end
-
-	it "delivers available bikes to the station" do
-
-		working_bike = Bike.new
-		van.dock(working_bike)
-
-		van.deliver_working_bikes_to(station)
-
-		expect(station.bikes).to include (working_bike)
-		expect(van).to be_empty 
-
+		it "delivers available bikes to the station" do
+			van.dock(working_bike)
+			van.deliver_working_bikes_to(station)
+			expect(station.bikes).to include (working_bike)
+			expect(van).to be_empty 
+		end
 	end
 end
