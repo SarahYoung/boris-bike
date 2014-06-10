@@ -15,7 +15,7 @@ Build a system in which users can collect and dock bikes. If bikes are broken th
 
 ####Demonstration:
 
-Docking bikes in the station:
+Dock bikes in the station:
 
 ````
 station.dock(bike)
@@ -26,7 +26,7 @@ station.available_bikes
 => [#<Bike:0x007f968098a490 @broken=false>]
 ````
 
-Repairing bikes at the garage:
+Repair bikes at the garage:
 
 ````
 van.collect_broken_bikes_from(station)
@@ -47,4 +47,3 @@ van.deliver_working_bikes_to(station)
 station.available_bikes
 => [#<Bike:0x007f96809525e0 @broken=false>]
 ````
-
