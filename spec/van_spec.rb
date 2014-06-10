@@ -13,7 +13,7 @@ describe Van do
 	let (:broken_bike) { Bike.new }
 
 
-	context "Upon initialisation" do
+	context "On initialising" do
 		it "allows setting default capacity" do
 			van = Van.new
 			expect(van.capacity).to eq(20)

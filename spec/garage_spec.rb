@@ -33,7 +33,7 @@ describe Garage do
 		expect(van.available_bikes.count).to eq(1)
 	end
 
-	context "On initialisation" do
+	context "On initialising" do
 		it "allows setting default capacity" do
 			expect(garage.capacity).to eq(100)
 		end	
