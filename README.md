@@ -4,7 +4,7 @@ A [Makers Academy](https://github.com/makersacademy) Week 3 project, set by [@sh
 
 ###Specification
 
-Build a system in which users can collect and dock bikes. If bikes are broken they can be collected by a van and taken to a garage; once fixed, the van returns the bikes to the docking station.
+Build a system in which **bikes* can be docked at a **docking station**. If bikes are broken they can be collected by a **van** and taken to a **garage**; once fixed, the van returns the bikes to the docking station.
 
 ###Technologies:
 * Ruby
