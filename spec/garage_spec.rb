@@ -34,7 +34,7 @@ describe Garage do
 	end
 
 	context "On initialisation" do
-		xit "allows setting default capacity" do
+		it "allows setting default capacity" do
 			expect(garage.capacity).to eq(100)
 		end	
 	end

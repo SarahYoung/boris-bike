@@ -18,7 +18,8 @@ class Van
 		self.available_bikes.each {|bike|	self.release(bike); station.dock(bike)}
 	end
 
-	def initialize(options = {}) 
+	def initialize(options = {})
+		@capacity = 20 
 		self.capacity = options.fetch(:capacity, capacity) 
 	end
 	

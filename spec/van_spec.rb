@@ -14,8 +14,9 @@ describe Van do
 
 
 	context "Upon initialisation" do
-		xit "allows setting default capacity" do
-			expect(van.capacity).to eq(10)
+		it "allows setting default capacity" do
+			van = Van.new
+			expect(van.capacity).to eq(20)
 		end
 	end	
 
