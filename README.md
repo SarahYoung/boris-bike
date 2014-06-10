@@ -15,6 +15,8 @@ Build a system in which users can collect and dock bikes. If bikes are broken th
 
 ####Demonstration:
 
+The following is a demonstration in ````irb```` of the mock Boris Bikes system.
+
 Dock bikes in the station:
 
 ````
