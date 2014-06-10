@@ -12,3 +12,39 @@ Build a system in which users can collect and dock bikes. If bikes are broken th
 * Object-oriented design
 * Test-driven-development with Rspec
 * CRC (class-responsibility-collaboration) cards
+
+####Demonstration:
+
+Docking bikes in the station:
+
+````
+station.dock(bike)
+=> [#<Bike:0x007f968098a490 @broken=false>]
+station.dock(broken_bike)
+=> [#<Bike:0x007f968098a490 @broken=false>, #<Bike:0x007f96809525e0 @broken=true>]
+station.available_bikes
+=> [#<Bike:0x007f968098a490 @broken=false>]
+````
+
+Repairing bikes at the garage:
+
+````
+van.collect_broken_bikes_from(station)
+=> [#<Bike:0x007f96809525e0 @broken=true>]
+garage.collect_broken_bikes_from(van)
+=> [#<Bike:0x007f96809525e0 @broken=true>]
+garage.fix_broken_bikes
+=> [#<Bike:0x007f96809525e0 @broken=false>]
+````
+
+Return fixed bikes to the station:
+
+````
+van.collect_working_bikes_from(garage)
+=> [#<Bike:0x007f96809525e0 @broken=false>]
+van.deliver_working_bikes_to(station)
+=> [#<Bike:0x007f96809525e0 @broken=false>]
+station.available_bikes
+=> [#<Bike:0x007f96809525e0 @broken=false>]
+````
+

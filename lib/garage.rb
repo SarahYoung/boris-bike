@@ -3,7 +3,7 @@ require_relative 'bike_container.rb'
 class Garage
 
 	include BikeContainer
-
+	
 	def	collect_broken_bikes_from(van)
 		van.broken_bikes.each {|bike|	van.release(bike); self.dock(bike)}
 	end

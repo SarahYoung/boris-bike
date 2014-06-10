@@ -4,6 +4,7 @@ describe Bike do
 	let (:bike) { Bike.new }
 
 	it "is not broken after created" do
+		bike = Bike.new
 		expect(bike).not_to be_broken
 	end
 
