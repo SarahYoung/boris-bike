@@ -35,7 +35,6 @@ describe Van do
 
 		it "delivers broken bikes to the garage" do
 			van.deliver_broken_bikes_to(garage)
-
 			expect(garage.bikes).to include (broken_bike)
 			expect(van).to be_empty
 		end
