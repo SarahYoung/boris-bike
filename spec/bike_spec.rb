@@ -13,7 +13,7 @@ describe Bike do
 		expect(bike).to be_broken
 	end
 
-	it "is be able to get fixed" do
+	it "is be able to be fixed" do
 		bike.break
 		bike.fix
 		expect(bike).not_to be_broken
