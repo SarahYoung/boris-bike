@@ -1,8 +1,8 @@
 ##Boris Bikes
 
-A [Makers Academy](https://github.com/makersacademy) Week 3 assignment, set by [@shadchnev](https://github.com/shadchnev), to replicate the functionality of London's Boris Bikes initiative. The project's goal was introduce students to Object-Oriented Programming and Design.
+A [Makers Academy](https://github.com/makersacademy) Week Three assignment, set by [@shadchnev](https://github.com/shadchnev), to replicate the functionality of London's Boris Bikes initiative. The project's goal was introduce students to Object-Oriented Programming and Design.
 
-###Specification
+###Specification:
 
 Build a system in which **bikes** can be docked at a **docking station**. If bikes are broken they can be collected by a **van** and taken to a **garage** where they can be fixed. Once fixed, the van will return the bikes to the docking station.
 
